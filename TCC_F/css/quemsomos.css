@@ -12,7 +12,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    background-image: url('../img/fundoentrar.jpg'); 
+    background-image: url
   }
 
   header, footer {
