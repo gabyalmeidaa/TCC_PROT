@@ -60,9 +60,40 @@
 </section>
 
 <div class="footer">
-  <p>&copy; 2025 - Todos os direitos reservados | <a href="mailto:contato@exemplo.com">tempodeflorescer@gmail.com</a></p>
+  <p>&copy; 2025 - Todos os direitos reservados | <a href="mailto:contato@exemplo.com">institutotempodeflorescer@gmail.com</a></p>
 </div>
+
+<script>
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = {
+      nome: form.nome.value,
+      sobrenome: form.sobrenome.value,
+      email: form.email.value,
+      mensagem: form.mensagem.value
+    };
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert('Mensagem enviada com sucesso!');
+        form.reset();
+      } else {
+        alert('Erro ao enviar mensagem');
+      }
+    } catch (error) {
+      alert('Erro na conexão com o servidor');
+    }
+  });
+</script>
 
 </body>
 </html>
-
